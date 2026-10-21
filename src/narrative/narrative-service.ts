@@ -151,7 +151,7 @@ function finalise(
   const causalFacts = new Set(built.signals.filter((s) => s.causal && s.strength >= 0.5).flatMap((s) => s.evidence));
 
   let hypothesis: NarrativeResponse['narrative']['hypothesis'] = null;
-  let rationale = `Upper bound ${ceiling} from data sufficiency ${built.sufficiency.toFixed(2)} (commits, full weeks and authors in the period).`;
+  let rationale = `Upper bound ${ceiling} from data sufficiency ${built.sufficiency.toFixed(2)} (commits, active weeks and authors in the period).`;
   if (draft.hypothesis) {
     const supported = draft.hypothesis.evidence.some((id) => causalFacts.has(id));
     const cap = supported ? ceiling : Math.min(ceiling, UNSUPPORTED_HYPOTHESIS_CAP);

@@ -79,10 +79,10 @@ export function detectSignals(b: InsightBundle, facts: FactSheet): Signal[] {
 
 /** How much the period's data can support any conclusion: 0 (none) … 1 (plenty). */
 export function dataSufficiency(b: InsightBundle): number {
-  const fullWeeks = b.activity.weeks.filter((w) => !w.partial).length;
+  const activeWeeks = b.activity.weeks.filter((w) => w.commits > 0).length;
   return clamp(
     0.4 * Math.min(1, b.contributors.totals.commits / 100) +
-      0.3 * Math.min(1, fullWeeks / 8) +
+      0.3 * Math.min(1, activeWeeks / 8) +
       0.3 * Math.min(1, b.contributors.totals.authors / 5),
   );
 }
