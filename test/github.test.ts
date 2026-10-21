@@ -6,7 +6,7 @@ import { GithubSource, type GhPull, type GhReview } from '../src/ingest/github/g
 import { computeFlow, computeReviewers } from '../src/insights/reviews.js';
 
 /**
- * The sandbox this was built in cannot reach api.github.com, so these tests stand in for the
+ * The environment this was built in could not reach api.github.com, so these tests stand in for the
  * live API with responses shaped like GitHub's documented payloads.
  */
 const API = 'https://api.github.test';

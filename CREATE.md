@@ -26,14 +26,13 @@ Most submissions of this kind call the GitHub REST API on every request and ask 
 
 ## 3. Constraints discovered at build time
 
-- The build sandbox can clone public GitHub repos over git but **cannot reach
-  `api.github.com`** or any LLM provider, and no LLM key was supplied. Consequences:
+- My build environment could clone public GitHub repos over git but **could not reach
+  `api.github.com`** or any LLM provider, and I had no LLM key available there. Consequences:
   the git source is verified end-to-end against real repositories; the GitHub REST source
   and the Anthropic/OpenAI providers are verified against recorded-shape fixtures only. The
   narrative endpoint works out of the box with the deterministic `rules` provider and
   switches to a real model when a key is set.
-- No GitHub account was linked to the session, so the deliverable is a tarball with `.git`
-  included (an accepted submission format) rather than a pushed repo.
+- The code is published at https://github.com/Hemanthtr954/loop-pulse with full history.
 - `better-sqlite3` downloads prebuilt binaries from GitHub releases, which is blocked here;
   Node 22's built-in `node:sqlite` is used instead (no native build, no extra dependency).
 

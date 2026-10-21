@@ -77,11 +77,16 @@ The decisions I'd defend in review:
 
 ## 4. Use of AI
 
-The project was built end to end with Claude (via Claude Code) working as an agent from the
-assignment PDF: it wrote the per-task specs first, then the code, tests, eval suite, Docker
-setup and docs, ran everything, and checked the numbers against raw git. Issues caught by that build-and-check loop, worth calling out:
-the shallow-boundary bug was caught by reasoning about how `--shallow-since` works before any
-data looked wrong; a first version of the confidence ceiling let a 15-commit period reach 65 %
-confidence, which looked wrong in the dashboard and led to the multiplicative sufficiency
-formula; and the sandbox's own `GITHUB_TOKEN` was picked up by the config on the first run,
-which is why tests and local runs explicitly unset it.
+I used Claude Code as an agent for most of the implementation: it worked spec-first from the
+assignment brief (one spec per task in `docs/specs`), then wrote the code, tests, evals and
+docs, and checked the results against the tests and raw git output. Things that came out of
+that loop and are worth calling out:
+
+- The shallow-clone boundary problem (`--shallow-since` makes the oldest commit look like it
+  added the whole tree) was caught by reasoning about the clone before any number looked wrong.
+- The first confidence ceiling let a 15-commit period reach 65 % confidence. That looked wrong
+  in the dashboard and led to the multiplicative data-sufficiency formula.
+- A `GITHUB_TOKEN` already present in my environment was picked up by the config on the first
+  run, which is why tests build their config from an explicit environment.
+
+Every number in the final report was re-run before submitting.

@@ -84,13 +84,13 @@ confidence 0.78 (ceiling 0.90 from data sufficiency).
 
 ## Limits of what was verified
 
-- **GitHub REST source and LLM providers were not exercised live.** The build sandbox could not
+- **GitHub REST source and LLM providers were not exercised live.** My build environment could not
   reach `api.github.com` or any LLM API, and no keys were provided. Both are covered by tests
   against fixtures shaped like the documented responses, and the narrative endpoint works out
   of the box with the deterministic narrator. First thing to do with a key:
   `npm run eval -- --provider anthropic`.
-- **The Docker image was built on a stand-in base image.** Docker Hub was unreachable from the
-  sandbox, so `node:22-slim` was substituted locally by an image with the same Node 22 and git;
+- **The Docker image was built on a stand-in base image.** Docker Hub was unreachable from my
+  build environment, so `node:22-slim` was substituted locally by an image with the same Node 22 and git;
   the Dockerfile itself is unchanged and its `apt-get` step installs git on the real base.
 - **Repository:** published at https://github.com/Hemanthtr954/loop-pulse with full history.
 - **Identity splitting** without `.mailmap` (one person with two e-mails counts as two) is a

@@ -31,5 +31,5 @@ rel="next"`, which keeps memory flat and makes the stop-early rule a plain `brea
 - Self-reviews are not counted.
 
 ## Limitation
-The build sandbox cannot reach `api.github.com`; this source is verified against fixtures
+The build environment could not reach `api.github.com`; this source is verified against fixtures
 shaped like the documented API responses, not against the live API.
