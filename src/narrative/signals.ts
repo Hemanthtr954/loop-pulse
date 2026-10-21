@@ -77,12 +77,12 @@ export function detectSignals(b: InsightBundle, facts: FactSheet): Signal[] {
   return out.sort((x, y) => y.strength - x.strength || x.kind.localeCompare(y.kind));
 }
 
-/** How much the period's data can support any conclusion: 0 (none) … 1 (plenty). */
+/**
+ * How much the period's data can support any conclusion: 0 (none) … 1 (plenty).
+ * A product, so one thin dimension (e.g. 15 commits from many people) limits the whole.
+ */
 export function dataSufficiency(b: InsightBundle): number {
   const activeWeeks = b.activity.weeks.filter((w) => w.commits > 0).length;
-  return clamp(
-    0.4 * Math.min(1, b.contributors.totals.commits / 100) +
-      0.3 * Math.min(1, activeWeeks / 8) +
-      0.3 * Math.min(1, b.contributors.totals.authors / 5),
-  );
+  const part = (x: number, target: number) => Math.sqrt(Math.min(1, x / target));
+  return clamp(part(b.contributors.totals.commits, 100) * part(activeWeeks, 8) * part(b.contributors.totals.authors, 5));
 }

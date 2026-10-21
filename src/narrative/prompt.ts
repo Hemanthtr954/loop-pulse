@@ -1,8 +1,8 @@
 import type { Fact } from './facts.js';
 import type { Signal } from './signals.js';
 
-/** Bump whenever the prompt or the fact format changes: it is part of the narrative cache key. */
-export const PROMPT_VERSION = 'v1';
+/** Bump whenever the prompt, facts, signals or calibration change: it is part of the narrative cache key. */
+export const PROMPT_VERSION = 'v2';
 
 export interface GenerationInput {
   repo: string;
