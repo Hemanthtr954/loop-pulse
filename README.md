@@ -14,9 +14,12 @@ written by an LLM whose every number is checked against the data before you see 
   by how much data there is. Works with no LLM key (deterministic narrator), with Anthropic,
   or with any OpenAI-compatible endpoint.
 
+Repository: https://github.com/Hemanthtr954/loop-pulse
+
 ## 60-second quickstart
 
 ```bash
+git clone https://github.com/Hemanthtr954/loop-pulse && cd loop-pulse
 cp .env.example .env          # optional: everything has a default
 docker compose up --build     # API + dashboard on http://localhost:8080
 ```

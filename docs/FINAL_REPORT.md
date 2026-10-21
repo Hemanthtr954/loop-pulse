@@ -92,13 +92,12 @@ confidence 0.78 (ceiling 0.90 from data sufficiency).
 - **The Docker image was built on a stand-in base image.** Docker Hub was unreachable from the
   sandbox, so `node:22-slim` was substituted locally by an image with the same Node 22 and git;
   the Dockerfile itself is unchanged and its `apt-get` step installs git on the real base.
-- **Not pushed to GitHub.** No GitHub account was linked to the session; the deliverable is a
-  tarball with `.git` included, which the assignment accepts.
+- **Repository:** published at https://github.com/Hemanthtr954/loop-pulse with full history.
 - **Identity splitting** without `.mailmap` (one person with two e-mails counts as two) is a
   known limitation; see NOTES "What I'd do next".
 
 ## Deliverables
 
-- Source with full git history: `loop-pulse.tar.gz`
+- Source with full git history: https://github.com/Hemanthtr954/loop-pulse (also as `loop-pulse.tar.gz`)
 - Hosted dashboard snapshot with real data (fastify, flask, express; 30/90/180-day views)
 - `README.md`, `NOTES.md`, `CREATE.md`, `docs/specs/T01…T12`, this report

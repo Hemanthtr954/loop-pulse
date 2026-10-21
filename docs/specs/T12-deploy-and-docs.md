@@ -12,7 +12,7 @@
 - Image built and run locally; smoke tests run against the container.
 - A static snapshot of the dashboard (real data, captured from the running service) is
   published as a hosted page so the result can be seen without running anything.
-- Source delivered as a tarball including `.git` (no GitHub account was linked to push).
+- Source published to https://github.com/Hemanthtr954/loop-pulse (public), also as a tarball including `.git`.
 
 ## Docs
 - `README.md`: what it is, 60-second quickstart, curl examples, metric definitions.
