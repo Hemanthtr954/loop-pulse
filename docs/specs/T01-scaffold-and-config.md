@@ -18,7 +18,7 @@ fast with a readable error, and has its security defaults switched on from the f
 |---|---|---|
 | `PORT` / `HOST` | `8080` / `0.0.0.0` | Listen address |
 | `DATA_DIR` | `./data` | SQLite file and git mirrors |
-| `TRACKED_REPOS` | `fastify/fastify` | Comma-separated `owner/name` list synced on boot |
+| `TRACKED_REPOS` | `fastify/fastify,expressjs/express` | Comma-separated `owner/name` list synced on boot |
 | `ALLOW_ANY_PUBLIC_REPO` | `false` | If false, `POST /v1/repos` only accepts repos in `TRACKED_REPOS` / `ALLOWED_REPOS` |
 | `ALLOWED_REPOS` | empty | Extra repos that may be registered at runtime |
 | `MAX_REPOS` | `20` | Upper bound on registered repos (disk/CPU guard) |

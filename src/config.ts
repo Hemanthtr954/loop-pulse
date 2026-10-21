@@ -36,7 +36,7 @@ const EnvSchema = z.object({
   DATA_DIR: z.string().default('./data'),
   WEB_DIST_DIR: z.string().default('./web/dist'),
 
-  TRACKED_REPOS: repoList('fastify/fastify'),
+  TRACKED_REPOS: repoList('fastify/fastify,expressjs/express'),
   ALLOWED_REPOS: repoList(),
   ALLOW_ANY_PUBLIC_REPO: bool,
   MAX_REPOS: z.coerce.number().int().min(1).max(500).default(20),
