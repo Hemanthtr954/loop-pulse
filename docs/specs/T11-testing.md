@@ -15,6 +15,6 @@ Tests concentrate where a bug would silently produce wrong numbers or unsafe beh
 Not tested on purpose: React rendering details, pino formatting, third-party libraries.
 
 ## Verification against source data
-A script (`scripts/verify-against-git.sh`) compares API totals for a window with raw
+A script (`scripts/verify-against-git.ts`, `npm run verify:git`) compares API totals for a window with raw
 `git rev-list --count --no-merges` and `git log --numstat` sums computed independently from
 the mirror. Run against real repos and recorded in the final report.

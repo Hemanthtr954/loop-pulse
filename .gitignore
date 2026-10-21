@@ -6,3 +6,5 @@ data/
 *.log
 evals/report.json
 coverage/
+web/dist-snapshot/
+web/snapshot.json

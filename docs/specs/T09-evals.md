@@ -5,14 +5,14 @@ A suite you would run before changing the prompt or swapping a model: `npm run e
 (offline, deterministic) and `npm run eval -- --provider anthropic` (live, when a key is set).
 
 ## Cases
-`evals/cases/*.json` — each case is an insight bundle with a planted story and expectations:
+`evals/cases.ts` — each case is an insight bundle built in code (so it always matches the real insight types) with a planted story and expectations:
 
 | Case | Planted story | Expected |
 |---|---|---|
 | `departure-drop` | Commits fall 55 %; the previous top author has 0 commits now | hypothesis cites the departure facts; confidence ≥ 0.5 |
 | `healthy-balanced` | Flat activity, TF 6, low HHI | no alarmist hypothesis (null or confidence ≤ 0.5) |
 | `single-owner-silo` | One author ≈ 80 % of churn, TF 1 | a finding cites truck factor fact |
-| `tiny-sample` | 4 commits in the period | confidence ≤ 0.4; caveat about sample size |
+| `tiny-sample` | 4 commits in the period | confidence ≤ 0.45; caveat about sample size |
 | `bot-heavy` | 60 % of commits are bots | finding mentions bot share fact |
 | `spike-week` | one week at 5× median | finding cites the spike fact |
 

@@ -3,7 +3,8 @@
 ## Container
 - Multi-stage `Dockerfile`: `deps` (npm ci) → `build` (tsc + vite) → `runtime`
   (`node:22-slim` + `git` + `ca-certificates`, production deps only, non-root `node` user,
-  `/data` volume, `HEALTHCHECK` on `/healthz`, `tini`-style init via `--init` in compose).
+  `/data` volume, `HEALTHCHECK` on `/healthz`). Compose adds `init: true`, a read-only root
+  filesystem with a tmpfs `/tmp`, and `no-new-privileges`.
 - `docker-compose.yml`: one service, `env_file: .env` (optional), port 8080, named volume.
   `docker compose up --build` is the whole quickstart.
 

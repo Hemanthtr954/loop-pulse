@@ -15,7 +15,7 @@ moving to Postgres is a driver swap, not a redesign.
 ```
 repos(id PK, owner, name, default_branch, created_at,
       sync_status, sync_error, last_synced_at, horizon, head_sha,
-      data_version, github_cursor, github_status)            UNIQUE(owner,name)
+      data_version, github_cursor, github_status, github_etag) UNIQUE(lower(owner/name))
 authors(id PK, repo_id FK, key, name, login, is_bot)        UNIQUE(repo_id,key)
 commits(sha, repo_id FK, author_id FK, committed_at, authored_at, author_tz_offset_min,
         additions, deletions, files_changed, is_merge, pr_number, stats_complete)
@@ -23,7 +23,7 @@ commits(sha, repo_id FK, author_id FK, committed_at, authored_at, author_tz_offs
 file_changes(repo_id, sha, path, additions, deletions)     INDEX(repo_id, sha), INDEX(repo_id, path)
 co_authors(repo_id, sha, author_id)
 pull_requests(repo_id, number, author_login, state, draft, created_at, updated_at,
-              merged_at, closed_at, first_review_at)        PK(repo_id, number)
+              merged_at, closed_at, first_review_at, reviews_pending) PK(repo_id, number)
 reviews(repo_id, id, pr_number, reviewer_login, state, submitted_at) PK(repo_id,id)
 narratives(cache_key PK, repo_id, created_at, body_json)
 schema_migrations(version)

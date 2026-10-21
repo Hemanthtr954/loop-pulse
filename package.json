@@ -16,7 +16,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && npm --prefix web run typecheck",
     "test": "vitest run",
     "eval": "tsx --disable-warning=ExperimentalWarning evals/run-evals.ts",
-    "verify:git": "bash scripts/verify-against-git.sh"
+    "verify:git": "tsx --disable-warning=ExperimentalWarning scripts/verify-against-git.ts"
   },
   "dependencies": {
     "@fastify/cors": "^11.3.1",

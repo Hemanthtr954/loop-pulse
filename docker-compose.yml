@@ -1,0 +1,23 @@
+services:
+  pulse:
+    build: .
+    image: loop-pulse:latest
+    init: true
+    ports:
+      - "${PORT:-8080}:8080"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PORT: "8080"
+    volumes:
+      - pulse-data:/data
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  pulse-data:

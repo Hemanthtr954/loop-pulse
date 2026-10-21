@@ -26,17 +26,18 @@
    rejection the model gets one repair attempt with the violations listed; if that fails,
    the deterministic `rules` narrator answers and `degraded: true` plus the reason is
    returned.
-5. **Calibrated confidence** — `confidence = min(modelConfidence, ceiling)` where the
-   ceiling rises with data sufficiency (commits, active weeks, authors in the period) and is
-   capped at 0.5 if the hypothesis cites no fact behind a detected signal. Both numbers and
-   the rationale are returned.
+5. **Calibrated confidence** — `confidence = min(modelConfidence, ceiling)` where
+   `ceiling = 0.3 + 0.6 × sufficiency` and sufficiency is the product of
+   `√min(1, commits/100)`, `√min(1, activeWeeks/8)` and `√min(1, authors/5)` — a product, so
+   one thin dimension limits the whole. A hypothesis that cites no fact behind a strong
+   (≥ 0.5) causal signal is capped at 0.5. Both numbers and the rationale are returned.
 6. **Evidence chain** — the response resolves every cited fact ID to its statement, value
    and source link.
 
 ## Caching and cost
 Narratives are cached in SQLite by `sha256(repo, period, data_version, provider, model,
-PROMPT_VERSION)`, so a narrative is generated once per data change, and changing the prompt
-invalidates the cache by construction. The route has its own rate limit.
+PROMPT_VERSION)`, so a narrative is generated once per data change. `PROMPT_VERSION` is bumped
+whenever the prompt, facts, signals or calibration change, which invalidates the cache. The route has its own rate limit.
 
 ## Providers
 `rules` (deterministic, default when no key), `anthropic`, `openai` (any compatible base
